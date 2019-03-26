@@ -33,7 +33,6 @@ public class CraneControl : MonoBehaviour
     float EndX;
     float delta;
     bool direction;
-    bool active = false;
     public float SpeedUpCart = 10;
     public float SpeedDownCart = 10;
     public float SpeedAllCrane = 10;
@@ -116,13 +115,9 @@ public class CraneControl : MonoBehaviour
             direction = true;
             MoveAllCrane(direction);
         }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            ScreenActive();
-        }
     }
 
-    void MoveUpCart(bool a)
+    public void MoveUpCart(bool a)
     {
         if (!a)
         {
@@ -133,7 +128,7 @@ public class CraneControl : MonoBehaviour
             UpCart.position = Vector3.MoveTowards(UpCart.position, EndPointRightUpCart.position, Time.deltaTime * SpeedUpCart);
         }
     }
-    void MoveDownCart(bool a)
+    public void MoveDownCart(bool a)
     {
         if (!a)
         {
@@ -144,7 +139,7 @@ public class CraneControl : MonoBehaviour
             DownCart.position = Vector3.MoveTowards(DownCart.position, EndPointRightDownCart.position, Time.deltaTime * SpeedDownCart);
         }
     }
-    void MoveFirstHook (bool a)
+    public void MoveFirstHook (bool a)
     {
         if (!a)
         {
@@ -171,7 +166,7 @@ public class CraneControl : MonoBehaviour
             }
         }
     }
-    void MoveSecondHook(bool a)
+    public void MoveSecondHook(bool a)
     {
         if (!a)
         {
@@ -198,7 +193,7 @@ public class CraneControl : MonoBehaviour
             }
         }
     }
-    void MoveThirdHook(bool a)
+    public void MoveThirdHook(bool a)
     {
         if (!a)
         {
@@ -225,7 +220,7 @@ public class CraneControl : MonoBehaviour
             }
         }
     }
-    void MoveAllCrane(bool a) {
+    public void MoveAllCrane(bool a) {
         if (!a)
         {
             StartX = Crane.position.x;
@@ -244,7 +239,7 @@ public class CraneControl : MonoBehaviour
         }
 
     }
-    void MoveAll (float r)
+    public void MoveAll (float r)
     {
         UpCart.position = new Vector3(UpCart.position.x - delta, UpCart.position.y, UpCart.position.z);
         EndPointLeftUpCart.position = new Vector3(EndPointLeftUpCart.position.x - delta, EndPointLeftUpCart.position.y, EndPointLeftUpCart.position.z);
@@ -253,22 +248,10 @@ public class CraneControl : MonoBehaviour
         EndPointLeftDownCart.position = new Vector3(EndPointLeftDownCart.position.x - delta, EndPointLeftDownCart.position.y, EndPointLeftDownCart.position.z);
         EndPointRightDownCart.position = new Vector3(EndPointRightDownCart.position.x - delta, EndPointRightDownCart.position.y, EndPointRightDownCart.position.z);
     }
-    void ScreenActive ()
+    public void ScreenActive (bool active)
     {
-        if (active)
-        {
-            active = false;
-            ScreenPlane.SetActive(true);
-            ScreenCanvas.SetActive(true);
-            ScreenCamera.SetActive(false);
-        }
-        else
-        {
-            active = true;
-            ScreenPlane.SetActive(false);
-            ScreenCanvas.SetActive(false);
-            ScreenCamera.SetActive(true);
-        }
-        
+            ScreenPlane.SetActive(active);
+            ScreenCanvas.SetActive(active);
+            ScreenCamera.SetActive(!active);
     }
 }
