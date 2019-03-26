@@ -535,6 +535,8 @@
     <Compile Include="Assets\Oculus\VoiceMod\Scripts\OVRVoiceModContext.cs" />
     <Compile Include="Assets\Scripts\Cable.cs" />
     <Compile Include="Assets\Scripts\ClockDigital.cs" />
+    <Compile Include="Assets\Scripts\CraneControl.cs" />
+    <Compile Include="Assets\Scripts\Grabber.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\track_pos.cs" />
     <Compile Include="Assets\Water\Water\Scripts\Displace.cs" />

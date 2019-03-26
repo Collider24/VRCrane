@@ -11,7 +11,7 @@ public class Cable : MonoBehaviour
 
     void Start()
     {
-        counter = transform.localScale.y; ;
+        counter = transform.localScale.y;
     }
 
     void Update()
