@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Container
   - Hands
+  - Lever
   layers:
   - Default
   - TransparentFX

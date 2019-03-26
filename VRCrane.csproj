@@ -537,9 +537,11 @@
     <Compile Include="Assets\Scripts\CameraActive.cs" />
     <Compile Include="Assets\Scripts\ClockDigital.cs" />
     <Compile Include="Assets\Scripts\CraneControl.cs" />
+    <Compile Include="Assets\Scripts\DownCartMover.cs" />
     <Compile Include="Assets\Scripts\Grabber.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\track_pos.cs" />
+    <Compile Include="Assets\Scripts\UpCartMover.cs" />
     <Compile Include="Assets\Water\Water\Scripts\Displace.cs" />
     <Compile Include="Assets\Water\Water\Scripts\GerstnerDisplace.cs" />
     <Compile Include="Assets\Water\Water\Scripts\MeshContainer.cs" />
