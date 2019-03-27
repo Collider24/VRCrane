@@ -539,6 +539,7 @@
     <Compile Include="Assets\Scripts\CraneControl.cs" />
     <Compile Include="Assets\Scripts\DownCartMover.cs" />
     <Compile Include="Assets\Scripts\Grabber.cs" />
+    <Compile Include="Assets\Scripts\LeftRight.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\track_pos.cs" />
     <Compile Include="Assets\Scripts\UpCartMover.cs" />
