@@ -7,17 +7,18 @@ public class LeftRight : MonoBehaviour
     public CraneControl Cabine;
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Hand")
+        if (other.tag == "Hands")
         {
-            if(OVRInput.GetUp(OVRInput.Button.One))
+            Debug.Log("OK");
+
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
             {
                 Cabine.MoveUpCart(false);
             }
-            else
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
             {
                 Cabine.MoveUpCart(true);
             }
         }
     }
 }
-

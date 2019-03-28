@@ -26,6 +26,9 @@ public class CraneControl : MonoBehaviour
     public Transform HookPoint1;
     public Transform HookPoint2;
     public Transform HookPoint3;
+    public Transform RotatePoint1;
+    public Transform RotatePoint2;
+    public Transform RotatePoint3;
     public GameObject ScreenCanvas;
     public GameObject ScreenPlane;
     public GameObject ScreenCamera;
@@ -43,7 +46,7 @@ public class CraneControl : MonoBehaviour
     float counter1;
     float counter2;
     float counter3;
-   
+    bool started;
     #endregion
 
     void Start()
@@ -52,7 +55,6 @@ public class CraneControl : MonoBehaviour
         counter2 = Hook21.localScale.y;
         counter3 = Hook31.localScale.y;
     }
-
     void Update()
     {
         if (Input.GetKey(KeyCode.W))
@@ -115,141 +117,189 @@ public class CraneControl : MonoBehaviour
             direction = true;
             MoveAllCrane(direction);
         }
+        if (Input.GetKey(KeyCode.P))
+        {
+            direction = true;
+            RotatePointZ3(direction);
+        }
+        if (Input.GetKey(KeyCode.O))
+        {
+            direction = false;
+            RotatePointZ3(direction);
+        }
     }
-
+    public void StartCrane (bool a)
+    {
+        started = a;
+    }
     public void MoveUpCart(bool a)
     {
-        if (!a)
+        if (started)
         {
-            UpCart.position = Vector3.MoveTowards(UpCart.position, EndPointLeftUpCart.position, Time.deltaTime * SpeedUpCart);
-        }
-        else
-        {
-            UpCart.position = Vector3.MoveTowards(UpCart.position, EndPointRightUpCart.position, Time.deltaTime * SpeedUpCart);
+            if (!a)
+            {
+                UpCart.position = Vector3.MoveTowards(UpCart.position, EndPointLeftUpCart.position, Time.deltaTime * SpeedUpCart);
+            }
+            else
+            {
+                UpCart.position = Vector3.MoveTowards(UpCart.position, EndPointRightUpCart.position, Time.deltaTime * SpeedUpCart);
+            }
         }
     }
     public void MoveDownCart(bool a)
     {
-        if (!a)
+        if (started)
         {
-            DownCart.position = Vector3.MoveTowards(DownCart.position, EndPointLeftDownCart.position, Time.deltaTime * SpeedDownCart);
-        }
-        else
-        {
-            DownCart.position = Vector3.MoveTowards(DownCart.position, EndPointRightDownCart.position, Time.deltaTime * SpeedDownCart);
+            if (!a)
+            {
+                DownCart.position = Vector3.MoveTowards(DownCart.position, EndPointLeftDownCart.position, Time.deltaTime * SpeedDownCart);
+            }
+            else
+            {
+                DownCart.position = Vector3.MoveTowards(DownCart.position, EndPointRightDownCart.position, Time.deltaTime * SpeedDownCart);
+            }
         }
     }
     public void MoveFirstHook (bool a)
     {
-        if (!a)
+        if (started)
         {
-
-            value = SpeedHook1 * 0.1f;
-            if (counter1 < 26)
+            if (!a)
             {
-                Hook11.localScale += new Vector3(0, value, 0);
-                Hook12.localScale += new Vector3(0, value, 0);
-                counter1 += SpeedHook1 * 0.1f;
-                MainHook1.position = new Vector3(HookPoint1.position.x, HookPoint1.position.y, HookPoint1.position.z);
+
+                value = SpeedHook1 * 0.1f;
+                if (counter1 < 26)
+                {
+                    Hook11.localScale += new Vector3(0, value, 0);
+                    Hook12.localScale += new Vector3(0, value, 0);
+                    counter1 += SpeedHook1 * 0.1f;
+                    MainHook1.position = new Vector3(HookPoint1.position.x, HookPoint1.position.y, HookPoint1.position.z);
+                }
             }
-        }
-        if (a)
-        {
-
-            value = SpeedHook1 * 0.1f;
-            if (counter1 > 1)
+            if (a)
             {
-                Hook11.localScale -= new Vector3(0, value, 0);
-                Hook12.localScale -= new Vector3(0, value, 0);
-                counter1 -= SpeedHook1 * 0.1f;
-                MainHook1.position = new Vector3(HookPoint1.position.x, HookPoint1.position.y, HookPoint1.position.z);
+
+                value = SpeedHook1 * 0.1f;
+                if (counter1 > 1)
+                {
+                    Hook11.localScale -= new Vector3(0, value, 0);
+                    Hook12.localScale -= new Vector3(0, value, 0);
+                    counter1 -= SpeedHook1 * 0.1f;
+                    MainHook1.position = new Vector3(HookPoint1.position.x, HookPoint1.position.y, HookPoint1.position.z);
+                }
             }
         }
     }
     public void MoveSecondHook(bool a)
     {
-        if (!a)
+        if (started)
         {
-
-            value = SpeedHook2 * 0.1f;
-            if (counter2 < 26)
+            if (!a)
             {
-                Hook21.localScale += new Vector3(0, value, 0);
-                Hook22.localScale += new Vector3(0, value, 0);
-                counter2 += SpeedHook2 * 0.1f;
-                MainHook2.position = new Vector3(HookPoint2.position.x, HookPoint2.position.y, HookPoint2.position.z);
+
+                value = SpeedHook2 * 0.1f;
+                if (counter2 < 26)
+                {
+                    Hook21.localScale += new Vector3(0, value, 0);
+                    Hook22.localScale += new Vector3(0, value, 0);
+                    counter2 += SpeedHook2 * 0.1f;
+                    MainHook2.position = new Vector3(HookPoint2.position.x, HookPoint2.position.y, HookPoint2.position.z);
+                }
             }
-        }
-        if (a)
-        {
-
-            value = SpeedHook2 * 0.1f;
-            if (counter2 > 1)
+            if (a)
             {
-                Hook21.localScale -= new Vector3(0, value, 0);
-                Hook22.localScale -= new Vector3(0, value, 0);
-                counter2 -= SpeedHook2 * 0.1f;
-                MainHook2.position = new Vector3(HookPoint2.position.x, HookPoint2.position.y, HookPoint2.position.z);
+
+                value = SpeedHook2 * 0.1f;
+                if (counter2 > 1)
+                {
+                    Hook21.localScale -= new Vector3(0, value, 0);
+                    Hook22.localScale -= new Vector3(0, value, 0);
+                    counter2 -= SpeedHook2 * 0.1f;
+                    MainHook2.position = new Vector3(HookPoint2.position.x, HookPoint2.position.y, HookPoint2.position.z);
+                }
             }
         }
     }
     public void MoveThirdHook(bool a)
     {
-        if (!a)
+        if (started)
         {
-
-            value = SpeedHook3 * 0.1f;
-            if (counter3 < 26)
+            if (!a)
             {
-                Hook31.localScale += new Vector3(0, value, 0);
-                Hook32.localScale += new Vector3(0, value, 0);
-                counter3 += SpeedHook3 * 0.1f;
-                MainHook3.position = new Vector3(HookPoint3.position.x, HookPoint3.position.y, HookPoint3.position.z);
+
+                value = SpeedHook3 * 0.1f;
+                if (counter3 < 26)
+                {
+                    Hook31.localScale += new Vector3(0, value, 0);
+                    Hook32.localScale += new Vector3(0, value, 0);
+                    counter3 += SpeedHook3 * 0.1f;
+                    MainHook3.position = new Vector3(HookPoint3.position.x, HookPoint3.position.y, HookPoint3.position.z);
+                }
+            }
+            if (a)
+            {
+
+                value = SpeedHook3 * 0.1f;
+                if (counter3 > 1)
+                {
+                    Hook31.localScale -= new Vector3(0, value, 0);
+                    Hook32.localScale -= new Vector3(0, value, 0);
+                    counter3 -= SpeedHook3 * 0.1f;
+                    MainHook3.position = new Vector3(HookPoint3.position.x, HookPoint3.position.y, HookPoint3.position.z);
+                }
             }
         }
-        if (a)
+    }
+    public void RotatePointZ3(bool a)
+    {
+        if (started)
         {
-
-            value = SpeedHook3 * 0.1f;
-            if (counter3 > 1)
+            if(a)
             {
-                Hook31.localScale -= new Vector3(0, value, 0);
-                Hook32.localScale -= new Vector3(0, value, 0);
-                counter3 -= SpeedHook3 * 0.1f;
-                MainHook3.position = new Vector3(HookPoint3.position.x, HookPoint3.position.y, HookPoint3.position.z);
+                RotatePoint3.position += new Vector3(0, 0.1f, 0);
+            }
+            else
+            {
+                RotatePoint3.position += new Vector3(0, -0.1f, 0);
             }
         }
     }
     public void MoveAllCrane(bool a) {
-        if (!a)
+        if (started)
         {
-            StartX = Crane.position.x;
-            Crane.position = Vector3.MoveTowards(Crane.position, EndPointLeftCrane.position, Time.deltaTime * SpeedAllCrane);
-            EndX = Crane.position.x;
-            delta = StartX - EndX;
-            MoveAll(delta);
+            if (!a)
+            {
+                StartX = Crane.position.x;
+                Crane.position = Vector3.MoveTowards(Crane.position, EndPointLeftCrane.position, Time.deltaTime * SpeedAllCrane);
+                EndX = Crane.position.x;
+                delta = StartX - EndX;
+                MoveAll(delta);
+            }
+            else
+            {
+                StartX = Crane.position.x;
+                Crane.position = Vector3.MoveTowards(Crane.position, EndPointRightCrane.position, Time.deltaTime * SpeedAllCrane);
+                EndX = Crane.position.x;
+                delta = StartX - EndX;
+                MoveAll(delta);
+            }
         }
-        else
-        {
-            StartX = Crane.position.x;
-            Crane.position = Vector3.MoveTowards(Crane.position, EndPointRightCrane.position, Time.deltaTime * SpeedAllCrane);
-            EndX = Crane.position.x;
-            delta = StartX - EndX;
-            MoveAll(delta);
-        }
-
     }
     public void MoveAll (float r)
     {
-        UpCart.position = new Vector3(UpCart.position.x - delta, UpCart.position.y, UpCart.position.z);
-        EndPointLeftUpCart.position = new Vector3(EndPointLeftUpCart.position.x - delta, EndPointLeftUpCart.position.y, EndPointLeftUpCart.position.z);
-        EndPointRightUpCart.position = new Vector3(EndPointRightUpCart.position.x - delta, EndPointRightUpCart.position.y, EndPointRightUpCart.position.z);
-        DownCart.position = new Vector3(DownCart.position.x - delta, DownCart.position.y, DownCart.position.z);
-        EndPointLeftDownCart.position = new Vector3(EndPointLeftDownCart.position.x - delta, EndPointLeftDownCart.position.y, EndPointLeftDownCart.position.z);
-        EndPointRightDownCart.position = new Vector3(EndPointRightDownCart.position.x - delta, EndPointRightDownCart.position.y, EndPointRightDownCart.position.z);
+        if (started)
+        {
+            UpCart.position = new Vector3(UpCart.position.x - delta, UpCart.position.y, UpCart.position.z);
+            EndPointLeftUpCart.position = new Vector3(EndPointLeftUpCart.position.x - delta, EndPointLeftUpCart.position.y, EndPointLeftUpCart.position.z);
+            EndPointRightUpCart.position = new Vector3(EndPointRightUpCart.position.x - delta, EndPointRightUpCart.position.y, EndPointRightUpCart.position.z);
+            DownCart.position = new Vector3(DownCart.position.x - delta, DownCart.position.y, DownCart.position.z);
+            EndPointLeftDownCart.position = new Vector3(EndPointLeftDownCart.position.x - delta, EndPointLeftDownCart.position.y, EndPointLeftDownCart.position.z);
+            EndPointRightDownCart.position = new Vector3(EndPointRightDownCart.position.x - delta, EndPointRightDownCart.position.y, EndPointRightDownCart.position.z);
+        }
     }
     public void ScreenActive (bool active)
     {
+
             ScreenPlane.SetActive(active);
             ScreenCanvas.SetActive(active);
             ScreenCamera.SetActive(!active);
