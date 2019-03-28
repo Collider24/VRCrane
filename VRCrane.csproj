@@ -540,12 +540,14 @@
     <Compile Include="Assets\Scripts\CraneControl.cs" />
     <Compile Include="Assets\Scripts\CraneRotation.cs" />
     <Compile Include="Assets\Scripts\DownCartMover.cs" />
+    <Compile Include="Assets\Scripts\FirstLever.cs" />
     <Compile Include="Assets\Scripts\Grabber.cs" />
-    <Compile Include="Assets\Scripts\LeftRight.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
+    <Compile Include="Assets\Scripts\SecondLever.cs" />
     <Compile Include="Assets\Scripts\StartButton.cs" />
     <Compile Include="Assets\Scripts\StartCrane.cs" />
     <Compile Include="Assets\Scripts\StopButton.cs" />
+    <Compile Include="Assets\Scripts\ThirdLever.cs" />
     <Compile Include="Assets\Scripts\track_pos.cs" />
     <Compile Include="Assets\Scripts\TumblerMechanics.cs" />
     <Compile Include="Assets\Scripts\UpCartMover.cs" />

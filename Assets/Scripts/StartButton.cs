@@ -38,6 +38,9 @@ public class StartButton : MonoBehaviour {
     }
     void OnTriggerExit(Collider other)
     {
-        StopAllCoroutines();   
+        StopCoroutine(TestCoroutine());
+        Button.StartCrane(false);
+        LightGreen.SetActive(false);
+        LightRed.SetActive(true);
     }
 }
