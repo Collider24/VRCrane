@@ -14,10 +14,12 @@ public class LeftRight : MonoBehaviour
             if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
             {
                 Cabine.MoveUpCart(false);
+                VibrationManager.singleton.TriggerVibration(OVRInput.Controller.LTouch);
             }
             if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
             {
                 Cabine.MoveUpCart(true);
+                VibrationManager.singleton.TriggerVibration(OVRInput.Controller.RTouch);
             }
         }
     }
