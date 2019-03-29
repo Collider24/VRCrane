@@ -1,1 +1,1 @@
-Ô È × À  Â È Á Ð À Ö È ß
+Testing Vibration function
