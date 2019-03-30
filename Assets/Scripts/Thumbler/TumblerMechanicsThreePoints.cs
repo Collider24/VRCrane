@@ -13,9 +13,15 @@ public class TumblerMechanicsThreePoints : MonoBehaviour
             if (OVRInput.GetUp(OVRInput.Button.Four))
             {
                 State++;
-                if (State != 2)
+                if (State == 1)
                 {
-                    transform.rotation *= Quaternion.Euler(0, 45, 0);
+                    State++;
+                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                }
+                else if (State == 2)
+                {
+                    State++;
+                    transform.rotation = Quaternion.Euler(0, 45, 0);
                 }
                 else
                 {
