@@ -149,8 +149,7 @@ public class CraneControl : MonoBehaviour
         {
             if (!a)
             {
-                Hook11.position = Vector3.MoveTowards(Hook11.position, EndPointCalibrateFirstHookRight.position, Time.deltaTime * SpeedUpCart);
-
+                UpCart.position = Vector3.MoveTowards(UpCart.position, EndPointLeftUpCart.position, Time.deltaTime * SpeedUpCart);
             }
             else
             {
