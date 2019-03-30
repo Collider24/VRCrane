@@ -2,19 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightControl : MonoBehaviour {
+public class LightControl : MonoBehaviour
+{
+    public int State = 0;
     public GameObject Light;
-    bool LightActive = false;
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (OVRInput.GetUp(OVRInput.Button.Four))
+        if (other.tag == "Hands")
         {
-            LightActive = !LightActive;
-            Light.SetActive(LightActive);
-            if (LightActive)
-                transform.rotation = Quaternion.Euler(0, 45, 0);
-            else
-                transform.rotation = Quaternion.Euler(0, -45, 0);
+            if (OVRInput.GetUp(OVRInput.Button.Four))
+            {
+                if (State != 0)
+                {
+                    State = 0;
+                    transform.rotation = Quaternion.Euler(0, -45, 0);
+                    Light.SetActive(true);
+                }
+                else
+                {
+                    State++;
+                    transform.rotation = Quaternion.Euler(0, 45, 0);
+                    Light.SetActive(false);
+                }
+            }
         }
     }
 }

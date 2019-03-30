@@ -13,6 +13,7 @@ public class Door : MonoBehaviour {
     }
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Zashel");
         if (other.tag == "Player")
         {
             Message.SetActive(true);
@@ -25,15 +26,15 @@ public class Door : MonoBehaviour {
         {
             if (OVRInput.GetUp(OVRInput.Button.Four))
             {
-                if (isDoorOpen)
+                if (!isDoorOpen)
                 {
                     DoorAnimation.Play("open_door");
-                    isDoorOpen = false;
+                    isDoorOpen = true;
                 }
                 else
                 {
                     DoorAnimation.Play("close_door");
-                    isDoorOpen = true;
+                    isDoorOpen = false;
                 }
             }
         }
