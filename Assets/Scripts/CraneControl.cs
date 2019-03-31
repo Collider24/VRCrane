@@ -14,23 +14,24 @@ public class CraneControl : MonoBehaviour
     public Transform DownCart;
     public Transform EndPointLeftDownCart;
     public Transform EndPointRightDownCart;
-    public Transform EndPointCalibrateFirstHookLeft;
-    public Transform EndPointCalibrateFirstHookRight;
-    public Transform EndPointCalibrateSecondHookLeft;
-    public Transform EndPointCalibrateSecondHookRight;
     public Transform EndPointCalibrateThirdHookLeft;
     public Transform EndPointCalibrateThirdHookRight;
-    public Transform EndPointCalibrateSecondMainHookLeft;
-    public Transform EndPointCalibrateSecondMainHookRight;
+    public Transform EndPointCalibrateThirdHookLeftSecond;
+    public Transform EndPointCalibrateThirdHookRightSecond;
+    public Transform EndPointCalibrateThirdMainHookLeft;
+    public Transform EndPointCalibrateThirdMainHookRight;
     public Transform Hook1;
     public Transform Hook2;
     public Transform Hook3;
+    public Transform Hook3Second;
     public Transform Hook11;
     public Transform Hook12;
     public Transform Hook21;
     public Transform Hook22;
     public Transform Hook31;
     public Transform Hook32;
+    public Transform Hook33;
+    public Transform Hook34;
     public Transform MainHook1;
     public Transform MainHook2;
     public Transform MainHook3;
@@ -53,6 +54,10 @@ public class CraneControl : MonoBehaviour
     public float SpeedHook1 = 1;
     public float SpeedHook2 = 1;
     public float SpeedHook3 = 1;
+    public float SpeedCallibrateHook = 1;
+    public float FirstSecondHookLimitDown = 26;
+    public float FirstSecondHookLimitUp = 1;
+    public float ThirdHookLimit = 26;
     float value;
     float counter1;
     float counter2;
@@ -131,12 +136,12 @@ public class CraneControl : MonoBehaviour
         if (Input.GetKey(KeyCode.P))
         {
             direction = true;
-            CalibrateSecondHook(direction);
+            CalibrateThirdHook(direction);
         }
         if (Input.GetKey(KeyCode.O))
         {
             direction = false;
-            CalibrateSecondHook(direction);
+            CalibrateThirdHook(direction);
         }
     }
     public void StartCrane (bool a)
@@ -179,7 +184,7 @@ public class CraneControl : MonoBehaviour
             {
 
                 value = SpeedHook1 * 0.1f;
-                if (counter1 < 26)
+                if (counter1 < FirstSecondHookLimitDown)
                 {
                     Hook11.localScale += new Vector3(0, value, 0);
                     Hook12.localScale += new Vector3(0, value, 0);
@@ -191,7 +196,7 @@ public class CraneControl : MonoBehaviour
             {
 
                 value = SpeedHook1 * 0.1f;
-                if (counter1 > 1)
+                if (counter1 > FirstSecondHookLimitUp)
                 {
                     Hook11.localScale -= new Vector3(0, value, 0);
                     Hook12.localScale -= new Vector3(0, value, 0);
@@ -209,28 +214,26 @@ public class CraneControl : MonoBehaviour
             {
 
                 value = SpeedHook2 * 0.1f;
-                if (counter2 < 26)
+                if (counter2 < FirstSecondHookLimitDown)
                 {
                     Hook21.localScale += new Vector3(0, value, 0);
                     Hook22.localScale += new Vector3(0, value, 0);
                     counter2 += SpeedHook2 * 0.1f;
                     MainHook2.position = new Vector3(HookPoint2.position.x, HookPoint2.position.y, HookPoint2.position.z);
-                    EndPointCalibrateSecondMainHookLeft.position = new Vector3 (EndPointCalibrateSecondMainHookLeft.position.x, HookPoint2.position.y, EndPointCalibrateSecondMainHookLeft.position.z);
-                    EndPointCalibrateSecondMainHookLeft.position = new Vector3(EndPointCalibrateSecondMainHookRight.position.x, HookPoint2.position.y, EndPointCalibrateSecondMainHookRight.position.z);
+                   
                 }
             }
             if (a)
             {
 
                 value = SpeedHook2 * 0.1f;
-                if (counter2 > 1)
+                if (counter2 > FirstSecondHookLimitUp)
                 {
                     Hook21.localScale -= new Vector3(0, value, 0);
                     Hook22.localScale -= new Vector3(0, value, 0);
                     counter2 -= SpeedHook2 * 0.1f;
                     MainHook2.position = new Vector3(HookPoint2.position.x, HookPoint2.position.y, HookPoint2.position.z);
-                    EndPointCalibrateSecondMainHookLeft.position = new Vector3(EndPointCalibrateSecondMainHookLeft.position.x, HookPoint2.position.y, EndPointCalibrateSecondMainHookLeft.position.z);
-                    EndPointCalibrateSecondMainHookLeft.position = new Vector3(EndPointCalibrateSecondMainHookRight.position.x, HookPoint2.position.y, EndPointCalibrateSecondMainHookRight.position.z);
+                   
                 }
             }
         }
@@ -243,12 +246,16 @@ public class CraneControl : MonoBehaviour
             {
 
                 value = SpeedHook3 * 0.1f;
-                if (counter3 < 26)
+                if (counter3 < ThirdHookLimit)
                 {
                     Hook31.localScale += new Vector3(0, value, 0);
                     Hook32.localScale += new Vector3(0, value, 0);
+                    Hook33.localScale += new Vector3(0, value, 0);
+                    Hook34.localScale += new Vector3(0, value, 0);
                     counter3 += SpeedHook3 * 0.1f;
                     MainHook3.position = new Vector3(HookPoint3.position.x, HookPoint3.position.y, HookPoint3.position.z);
+                    EndPointCalibrateThirdMainHookLeft.position = new Vector3(EndPointCalibrateThirdMainHookLeft.position.x, HookPoint3.position.y, EndPointCalibrateThirdMainHookLeft.position.z);
+                    EndPointCalibrateThirdMainHookRight.position = new Vector3(EndPointCalibrateThirdMainHookRight.position.x, HookPoint3.position.y, EndPointCalibrateThirdMainHookRight.position.z);
                 }
             }
             if (a)
@@ -259,43 +266,34 @@ public class CraneControl : MonoBehaviour
                 {
                     Hook31.localScale -= new Vector3(0, value, 0);
                     Hook32.localScale -= new Vector3(0, value, 0);
+                    Hook33.localScale -= new Vector3(0, value, 0);
+                    Hook34.localScale -= new Vector3(0, value, 0);
                     counter3 -= SpeedHook3 * 0.1f;
                     MainHook3.position = new Vector3(HookPoint3.position.x, HookPoint3.position.y, HookPoint3.position.z);
+                    EndPointCalibrateThirdMainHookLeft.position = new Vector3(EndPointCalibrateThirdMainHookLeft.position.x, HookPoint3.position.y, EndPointCalibrateThirdMainHookLeft.position.z);
+                    EndPointCalibrateThirdMainHookRight.position = new Vector3(EndPointCalibrateThirdMainHookRight.position.x, HookPoint3.position.y, EndPointCalibrateThirdMainHookRight.position.z);
                 }
             }
         }
     }
-    public void CalibrateSecondHook(bool a)
+    public void CalibrateThirdHook(bool a)
     {
         if (started)
         {
-            MainHook2.position = new Vector3(HookPoint2.position.x, HookPoint2.position.y, HookPoint2.position.z);
-            if (!a)
+            if (a)
             { 
-                Hook2.position = Vector3.MoveTowards(Hook2.position, EndPointCalibrateSecondHookRight.position, Time.deltaTime * SpeedUpCart);
-                MainHook2.position = Vector3.MoveTowards(MainHook2.position, EndPointCalibrateSecondMainHookRight.position, Time.deltaTime * SpeedUpCart);
+                Hook3.position = Vector3.MoveTowards(Hook3.position, EndPointCalibrateThirdHookRight.position, Time.deltaTime * SpeedCallibrateHook);
+                Hook3Second.position = Vector3.MoveTowards(Hook3Second.position, EndPointCalibrateThirdHookRightSecond.position, Time.deltaTime * SpeedCallibrateHook);
+                MainHook3.position = Vector3.MoveTowards(MainHook3.position, EndPointCalibrateThirdMainHookRight.position, Time.deltaTime * SpeedCallibrateHook);
             }
             else
             {
-                Hook2.position = Vector3.MoveTowards(Hook2.position, EndPointCalibrateSecondHookLeft.position, Time.deltaTime * SpeedUpCart);
-                MainHook2.position = Vector3.MoveTowards(MainHook2.position, EndPointCalibrateSecondMainHookLeft.position, Time.deltaTime * SpeedUpCart);
+                Hook3.position = Vector3.MoveTowards(Hook3.position, EndPointCalibrateThirdHookLeft.position, Time.deltaTime * SpeedCallibrateHook);
+                Hook3Second.position = Vector3.MoveTowards(Hook3Second.position, EndPointCalibrateThirdHookLeftSecond.position, Time.deltaTime * SpeedCallibrateHook);
+                MainHook3.position = Vector3.MoveTowards(MainHook3.position, EndPointCalibrateThirdMainHookLeft.position, Time.deltaTime * SpeedCallibrateHook);
             }
         }
-    }
-    /*public void RotatePointZ3(bool a)
-    {
-        if (started)
-        {
-            if(a)
-            {
-                RotatePoint3.position += new Vector3(0, 0.1f, 0);
-            }
-            else
-            {
-                RotatePoint3.position += new Vector3(0, -0.1f, 0);
-            }
-        }
-    } */
+    }    
     public void MoveAllCrane(bool a) {
         if (started)
         {

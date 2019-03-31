@@ -7,7 +7,7 @@ public class StopButton : MonoBehaviour {
     public CraneControl Button;
     public GameObject LightGreen;
     public GameObject LightRed;
-    void OnTriggerStay(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Hands")
         {

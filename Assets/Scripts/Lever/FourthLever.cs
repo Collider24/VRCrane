@@ -10,11 +10,11 @@ public class FourthLever : MonoBehaviour {
         {
             if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickUp))
             {
-                Cabine.CalibrateSecondHook(true);
+                Cabine.CalibrateThirdHook(true);
             }
             if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickDown))
             {
-                Cabine.CalibrateSecondHook(false);
+                Cabine.CalibrateThirdHook(false);
             }
         }
     }
