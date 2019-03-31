@@ -12,7 +12,7 @@ public class ThirdLever : MonoBehaviour
     {
         if (other.tag == "Hands")
         {
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
             {
                 if (StateNowMoveCart.State == 0)
                     Cabine.MoveDownCart(false);
@@ -22,7 +22,7 @@ public class ThirdLever : MonoBehaviour
                     Cabine.MoveUpCart(false);
                 }
             }
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
             {
                 if (StateNowMoveCart.State == 0)
                     Cabine.MoveDownCart(true);
