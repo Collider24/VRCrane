@@ -34,31 +34,6 @@ public class ScreenControl : MonoBehaviour {
         deltaHook2 = Math.Round((Hook2.position.y - Plane.position.y), 3);
         HeightHook2.text = ("+" + deltaHook2.ToString());
         deltaHook3 = Math.Round((Hook3.position.y - Plane.position.y), 3);
-        HeightHook3.text = ("+" + deltaHook3.ToString());
-        if (container)
-        {
-            if (isFirst.FirstContainer) {
-                WeightHook1.text = ("+" + container.mass.ToString());
-            }
-            if (isSecond.SecondContainer) {
-                WeightHook2.text = ("+" + container.mass.ToString());
-            }
-            if (isThird.ThirdContainer) {
-                WeightHook3.text = ("+" + container.mass.ToString());
-            }
-            if (!isFirst.FirstContainer)
-            {
-                WeightHook1.text = ("+0.000");
-            }
-            if (!isSecond.SecondContainer)
-            {
-                WeightHook2.text = ("+0.000");
-            }
-            if (!isThird.ThirdContainer)
-            {
-                WeightHook3.text = ("+0.000");
-            }
-        }
-        
+        HeightHook3.text = ("+" + deltaHook3.ToString());  
     }
 }
