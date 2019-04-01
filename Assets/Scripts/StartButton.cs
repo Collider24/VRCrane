@@ -16,14 +16,16 @@ public class StartButton : MonoBehaviour {
     {
         if (other.tag == "Hands")
         {
-            PowerOn = TestCoroutine();
-            StartCoroutine(PowerOn);
+            PowerOn = TestCoroutine(); 
+            if (!Done)
+             StartCoroutine(PowerOn);
         }
     }
     IEnumerator TestCoroutine()
     {
         while (true)
         {
+            Done = false;
             yield return new WaitForSeconds(2.1f);
             LightGreen.SetActive(true);
             for (int i =0; i<3; i++)
@@ -39,17 +41,19 @@ public class StartButton : MonoBehaviour {
             LightRed.SetActive(false);
             Button.StartCrane(true);
             LightRed.SetActive(false);
-            Done = true;
             Screen.SetActive(true);
+            Done = true;
+           
             break;
         }
     }
     void OnTriggerExit(Collider other)
     { 
         StopCoroutine(PowerOn);
-        Screen.SetActive(false);
+        
         if (!Done)
         {
+            Screen.SetActive(false);
             LightGreen.SetActive(false);
             Button.StartCrane(false);
             LightRed.SetActive(true);
