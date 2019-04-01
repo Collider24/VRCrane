@@ -55,3 +55,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+Assets/_TerrainAutoUpgrade.meta
+Assets/_TerrainAutoUpgrade/
+Packages/*
+ProjectSettings/PresetManager.asset
+ProjectSettings/VFXManager.asset
