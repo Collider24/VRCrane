@@ -9,11 +9,11 @@ public class SecondLever : MonoBehaviour
     {
         if (other.tag == "Hands")
         {
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickUp))
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickDown))
             {
                 Cabine.MoveAllCrane(true);
             }
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickDown))
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickUp))
             {
                 Cabine.MoveAllCrane(false);
             }

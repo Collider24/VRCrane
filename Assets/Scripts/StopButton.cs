@@ -9,6 +9,7 @@ public class StopButton : MonoBehaviour {
     public GameObject LightRed;
     public StartButton IsDone;
     public GameObject Screen;
+    public GameObject ScreenCam;
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Hands")
@@ -18,6 +19,7 @@ public class StopButton : MonoBehaviour {
             LightGreen.SetActive(false);
             LightRed.SetActive(true);
             Screen.SetActive(false);
+            ScreenCam.SetActive(false);
         }
     }
 }

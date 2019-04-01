@@ -9,11 +9,15 @@ public class StartButton : MonoBehaviour {
     public GameObject LightRed;
     public GameObject Screen;
     public bool Done;
+
+    private IEnumerator PowerOn;
+
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Hands")
         {
-            StartCoroutine(TestCoroutine());
+            PowerOn = TestCoroutine();
+            StartCoroutine(PowerOn);
         }
     }
     IEnumerator TestCoroutine()
@@ -42,7 +46,7 @@ public class StartButton : MonoBehaviour {
     }
     void OnTriggerExit(Collider other)
     { 
-        StopCoroutine(TestCoroutine());
+        StopCoroutine(PowerOn);
         Screen.SetActive(false);
         if (!Done)
         {
