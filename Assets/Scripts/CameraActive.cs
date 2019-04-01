@@ -6,7 +6,7 @@ public class CameraActive : MonoBehaviour
 {
 
     public CraneControl Screen;
-    private bool active = true;
+    private bool active = false;
 
     void OnTriggerEnter(Collider other)
     {
