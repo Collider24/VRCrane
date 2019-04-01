@@ -329,9 +329,11 @@ public class CraneControl : MonoBehaviour
     }
     public void ScreenActive (bool active)
     {
-
+        if (started)
+        {
             ScreenPlane.SetActive(active);
             ScreenCanvas.SetActive(active);
             ScreenCamera.SetActive(!active);
+        }
     }
 }

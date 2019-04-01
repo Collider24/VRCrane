@@ -14,7 +14,7 @@ public class ThirdLever : MonoBehaviour
         if (other.tag == "Hands")
         {
             Move.EnableLinearMovement = false;
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
+            if (OVRInput.Get(OVRInput.Button.PrimaryThumbstickRight))
             {
                 if (StateNowMoveCart.State == 0)
                     Cabine.MoveDownCart(false);
@@ -24,7 +24,7 @@ public class ThirdLever : MonoBehaviour
                     Cabine.MoveUpCart(false);
                 }
             }
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
+            if (OVRInput.Get(OVRInput.Button.PrimaryThumbstickLeft))
             {
                 if (StateNowMoveCart.State == 0)
                     Cabine.MoveDownCart(true);
@@ -34,7 +34,7 @@ public class ThirdLever : MonoBehaviour
                     Cabine.MoveUpCart(true);
                 }
             }
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickUp))
+            if (OVRInput.Get(OVRInput.Button.PrimaryThumbstickUp))
             {
                 if (StateNowMoveHook.State == 0)
                 {
@@ -60,7 +60,7 @@ public class ThirdLever : MonoBehaviour
                     }
                 }
             }
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickDown))
+            if (OVRInput.Get(OVRInput.Button.PrimaryThumbstickDown))
             {
                 if (StateNowMoveHook.State == 0)
                 {
@@ -90,6 +90,6 @@ public class ThirdLever : MonoBehaviour
     }
     void OnTriggerExit (Collider other)
     {
-        Move.EnableLinearMovement = false;
+        Move.EnableLinearMovement = true;
     }
 }

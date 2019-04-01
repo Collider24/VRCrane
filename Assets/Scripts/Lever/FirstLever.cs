@@ -14,7 +14,7 @@ public class FirstLever : MonoBehaviour
     {
         if (other.tag == "Hands")
         {
-            if(OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
+            if(OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
             {
                 UpCartMove = true;
                 Hook1Move = false;
@@ -26,7 +26,7 @@ public class FirstLever : MonoBehaviour
                     Cabine.MoveUpCart(false);
                 }
             }
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
             {
                 UpCartMove = true;
                 Hook1Move = false;
