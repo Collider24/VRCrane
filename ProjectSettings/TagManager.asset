@@ -8,6 +8,8 @@ TagManager:
   - Hands
   - Lever
   - Hook3
+  - Hook2
+  - Hook1
   layers:
   - Default
   - TransparentFX

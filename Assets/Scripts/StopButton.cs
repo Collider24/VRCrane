@@ -7,11 +7,12 @@ public class StopButton : MonoBehaviour {
     public CraneControl Button;
     public GameObject LightGreen;
     public GameObject LightRed;
+    public StartButton IsDone;
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Hands")
         {
-            Debug.Log("OK");
+            IsDone.Done = false;
             Button.StartCrane(false);
             LightGreen.SetActive(false);
             LightRed.SetActive(true);

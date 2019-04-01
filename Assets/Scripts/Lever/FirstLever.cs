@@ -8,12 +8,16 @@ public class FirstLever : MonoBehaviour
     public TumblerMechanicsTwoPoints StateNowCarts;
     public TumblerMechanicsTwoPoints StateNowHooks;
     public TumblerMechanicsThreePoints StateNowFirstSecondHooks;
+    public bool UpCartMove = false;
+    public bool Hook1Move = false;
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Hands")
         {
             if(OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))
             {
+                UpCartMove = true;
+                Hook1Move = false;
                 if (StateNowCarts.State == 0)
                     Cabine.MoveUpCart(false);
                 else
@@ -24,6 +28,8 @@ public class FirstLever : MonoBehaviour
             }
             if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
             {
+                UpCartMove = true;
+                Hook1Move = false;
                 if (StateNowCarts.State == 0)
                     Cabine.MoveUpCart(true);
                 else
@@ -34,6 +40,8 @@ public class FirstLever : MonoBehaviour
             }
             if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickUp))
             {
+                UpCartMove = false;
+                Hook1Move = true;
                 if (StateNowHooks.State == 0)
                 {
                     if (StateNowFirstSecondHooks.State == 0)
@@ -68,6 +76,8 @@ public class FirstLever : MonoBehaviour
             }
             if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickDown))
             {
+                UpCartMove = false;
+                Hook1Move = true;
                 if (StateNowHooks.State == 0)
                 {
                     if (StateNowFirstSecondHooks.State == 0)

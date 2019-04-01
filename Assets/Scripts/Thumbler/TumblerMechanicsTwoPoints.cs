@@ -15,12 +15,12 @@ public class TumblerMechanicsTwoPoints : MonoBehaviour
                 if (State != 0)
                 {
                     State = 0;
-                    transform.rotation = Quaternion.Euler(0, -45, 0);
+                    transform.rotation = Quaternion.Euler(0, 45, 0);
                 }
                 else
                 {
                     State++;
-                    transform.rotation = Quaternion.Euler(0, 45, 0);
+                    transform.rotation = Quaternion.Euler(0, 135, 0);
                 }
             }
         }

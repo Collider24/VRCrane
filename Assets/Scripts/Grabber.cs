@@ -11,14 +11,48 @@ public class Grabber : MonoBehaviour
     public GameObject Container;
     public Rigidbody ContainerRigidbody;
     public bool InTrigger = false;
+    public bool FirstHook = false;
+    public bool SecondHook = false;
+    public bool ThirdHook = false;
     void Start()
     {
         ContainerRigidbody.GetComponent<Rigidbody>(); 
     }
     void OnTriggerStay(Collider other)
     {
+        if (other.tag == "Hook1")
+        {
+            FirstHook = true;
+            InTrigger = true;
+            if (IsGrabbed.Grabbed)
+            {
+                ContainerRigidbody.isKinematic = true;
+                Container.transform.position = Hook1.position;
+            }
+            else
+            {
+                if (ContainerRigidbody.isKinematic)
+                    ContainerRigidbody.isKinematic = false;
+            }
+        }
+        if (other.tag == "Hook2")
+        {
+            SecondHook = true;
+            InTrigger = true;
+            if (IsGrabbed.Grabbed)
+            {
+                ContainerRigidbody.isKinematic = true;
+                Container.transform.position = Hook2.position;
+            }
+            else
+            {
+                if (ContainerRigidbody.isKinematic)
+                    ContainerRigidbody.isKinematic = false;
+            }
+        }
         if (other.tag == "Hook3")
         {
+            ThirdHook = true;
             InTrigger = true;
             if (IsGrabbed.Grabbed)
             {
@@ -36,5 +70,8 @@ public class Grabber : MonoBehaviour
     {
         InTrigger = false;
         ContainerRigidbody.isKinematic = false;
+        FirstHook = false;
+        SecondHook = false;
+        ThirdHook = false;
     }
 }

@@ -7,6 +7,8 @@ public class StartButton : MonoBehaviour {
     public CraneControl Button;
     public GameObject LightGreen;
     public GameObject LightRed;
+    public GameObject Screen;
+    public bool Done;
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Hands")
@@ -33,11 +35,20 @@ public class StartButton : MonoBehaviour {
             LightRed.SetActive(false);
             Button.StartCrane(true);
             LightRed.SetActive(false);
+            Done = true;
+            Screen.SetActive(true);
             break;
         }
     }
     void OnTriggerExit(Collider other)
-    {
+    { 
         StopCoroutine(TestCoroutine());
+        Screen.SetActive(false);
+        if (!Done)
+        {
+            LightGreen.SetActive(false);
+            Button.StartCrane(false);
+            LightRed.SetActive(true);
+        }
     }
 }

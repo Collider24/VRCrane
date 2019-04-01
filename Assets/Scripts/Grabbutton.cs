@@ -17,4 +17,12 @@ public class Grabbutton : MonoBehaviour
             }
         }
     }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            Grabbed = !Grabbed;
+        }
+    }
 }
