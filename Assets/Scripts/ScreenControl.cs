@@ -27,7 +27,12 @@ public class ScreenControl : MonoBehaviour {
     public Text PowerA3;
     public Text PowerA4;
     public Text PowerA5;
-    float forRand;
+    public Text PowerA1H;
+    public Text PowerA2H;
+    public Text PowerA3H;
+    public Text PowerA4H;
+    public Text PowerA5H;
+    float forRand, forRandH;
     int i = 0;
     public Rigidbody container;
     double deltaHook1;
@@ -41,6 +46,7 @@ public class ScreenControl : MonoBehaviour {
     public Grabber isThird;
     public FirstLever isCartMove;
     public FirstLever isHookMove;
+    public FirstLever isThirdHookMove;
     UnityEngine.Random rand;
 
     void Start()
@@ -107,18 +113,48 @@ public class ScreenControl : MonoBehaviour {
             {
                 forRand = UnityEngine.Random.Range(0.020f, 0.065f);
                 PowerA4.text = ("+" + (forRand).ToString());
+                forRandH = UnityEngine.Random.Range(0.020f, 0.065f);
+                PowerA4H.text = ("+" + (forRandH).ToString());
             }
         }
-        if (isCartMove.Hook1Move)
+        if (isCartMove.Hook1Move || isThirdHookMove.Hook1Move)
+        {
+
+            i++;
+            if (i % 60 == 0)
+            {
+                
+                forRand = UnityEngine.Random.Range(0.020f, 0.065f);
+                PowerA5.text = ("+" + (forRand).ToString());
+                PowerA1.text = ("+" + (forRand).ToString());
+                forRandH = UnityEngine.Random.Range(0.020f, 0.065f);
+                PowerA5H.text = ("+" + (forRandH).ToString());
+                PowerA1H.text = ("+" + (forRandH).ToString());
+            }
+        }
+        if (isCartMove.Hook2Move || isThirdHookMove.Hook2Move)
         {
 
             i++;
             if (i % 60 == 0)
             {
                 forRand = UnityEngine.Random.Range(0.020f, 0.065f);
-                PowerA5.text = ("+" + (forRand).ToString());
+                PowerA2.text = ("+" + (forRand).ToString());
+                forRandH = UnityEngine.Random.Range(0.020f, 0.065f);
+                PowerA2H.text = ("+" + (forRandH).ToString());
             }
         }
+        if (isCartMove.Hook3Move || isThirdHookMove.Hook3Move)
+        {
 
+            i++;
+            if (i % 60 == 0)
+            {
+                forRand = UnityEngine.Random.Range(0.020f, 0.065f);
+                PowerA3.text = ("+" + (forRand).ToString());
+                forRandH = UnityEngine.Random.Range(0.020f, 0.065f);
+                PowerA3H.text = ("+" + (forRandH).ToString());
+            }
+        }
     }
 }

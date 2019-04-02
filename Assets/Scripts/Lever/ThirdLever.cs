@@ -9,6 +9,9 @@ public class ThirdLever : MonoBehaviour
     public TumblerMechanicsTwoPoints StateNowMoveCart;
     public TumblerMechanicsTwoPoints StateNowMoveHook;
     public TumblerMechanicsThreePoints StateNowMoveAllHooks;
+    public bool Hook1Move = false;
+    public bool Hook2Move = false;
+    public bool Hook3Move = false;
     void OnTriggerStay(Collider other)
     {
         if (other.tag == "Hands")
@@ -39,6 +42,9 @@ public class ThirdLever : MonoBehaviour
                 if (StateNowMoveHook.State == 0)
                 {
                     Cabine.MoveThirdHook(true);
+                    Hook1Move = false;
+                    Hook2Move = false;
+                    Hook3Move = true;
                 }
                 else
                 {
@@ -46,17 +52,26 @@ public class ThirdLever : MonoBehaviour
                     {
                         Cabine.MoveFirstHook(true);
                         Cabine.MoveThirdHook(true);
+                        Hook1Move = true;
+                        Hook2Move = false;
+                        Hook3Move = true;
                     }
                     else if (StateNowMoveAllHooks.State == 1)
                     {
                         Cabine.MoveSecondHook(true);
                         Cabine.MoveThirdHook(true);
+                        Hook1Move = false;
+                        Hook2Move = true;
+                        Hook3Move = true;
                     }
                     else
                     {
                         Cabine.MoveFirstHook(true);
                         Cabine.MoveSecondHook(true);
                         Cabine.MoveThirdHook(true);
+                        Hook1Move = true;
+                        Hook2Move = true;
+                        Hook3Move = true;
                     }
                 }
             }
@@ -65,6 +80,9 @@ public class ThirdLever : MonoBehaviour
                 if (StateNowMoveHook.State == 0)
                 {
                     Cabine.MoveThirdHook(false);
+                    Hook1Move = false;
+                    Hook2Move = false;
+                    Hook3Move = true;
                 }
                 else
                 {
@@ -72,17 +90,26 @@ public class ThirdLever : MonoBehaviour
                     {
                         Cabine.MoveFirstHook(false);
                         Cabine.MoveThirdHook(false);
+                        Hook1Move = true;
+                        Hook2Move = false;
+                        Hook3Move = true;
                     }
                     else if (StateNowMoveAllHooks.State == 1)
                     {
                         Cabine.MoveSecondHook(false);
                         Cabine.MoveThirdHook(false);
+                        Hook1Move = true;
+                        Hook2Move = false;
+                        Hook3Move = true;
                     }
                     else
                     {
                         Cabine.MoveFirstHook(false);
                         Cabine.MoveSecondHook(false);
                         Cabine.MoveThirdHook(false);
+                        Hook1Move = true;
+                        Hook2Move = true;
+                        Hook3Move = true;
                     }
                 }
             }

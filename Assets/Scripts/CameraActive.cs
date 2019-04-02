@@ -6,14 +6,15 @@ public class CameraActive : MonoBehaviour
 {
 
     public CraneControl Screen;
-    private bool active = false;
+    public bool Active = false;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Hands")
         {
-            Screen.ScreenActive(active);
-            active = !active;
+            Screen.ScreenActive(Active);
+            Active = !Active;
         }
     }
+
 }
