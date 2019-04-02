@@ -156,5 +156,27 @@ public class ScreenControl : MonoBehaviour {
                 PowerA3H.text = ("+" + (forRandH).ToString());
             }
         }
+        if (!isCartMove.UpCartMove)
+        {
+            PowerA4.text = ("+0.000");
+            PowerA4H.text = ("+0.000");
+        }
+        if (!isCartMove.Hook1Move && !isThirdHookMove.Hook1Move)
+        {
+            PowerA5.text = ("+0.000");
+            PowerA5H.text = ("+0.000");
+            PowerA1.text = ("+0.000");
+            PowerA1H.text = ("+0.000");
+        }
+        if (!isCartMove.Hook2Move && !isThirdHookMove.Hook2Move)
+        {
+            PowerA2.text = ("+0.000");
+            PowerA2H.text = ("+0.000");
+        }
+        if (!isCartMove.Hook3Move && !isThirdHookMove.Hook3Move)
+        {
+            PowerA3.text = ("+0.000");
+            PowerA3H.text = ("+0.000");
+        }
     }
 }

@@ -12,16 +12,15 @@ public class LightControl : MonoBehaviour
         {
             if (OVRInput.GetUp(OVRInput.Button.Four))
             {
-                if (State != 0)
+                State = (State  + 1) % 2;
+                if (State == 1)
                 {
-                    State = 0;
-                    transform.rotation = Quaternion.Euler(0, -135, 0);
+                    transform.rotation = Quaternion.Euler(0, -45, 0);
                     Light.SetActive(true);
                 }
                 else
                 {
-                    State++;
-                    transform.rotation = Quaternion.Euler(0, -45, 0);
+                    transform.rotation = Quaternion.Euler(0, -135, 0);
                     Light.SetActive(false);
                 }
             }

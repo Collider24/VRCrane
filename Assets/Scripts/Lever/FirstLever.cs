@@ -16,7 +16,7 @@ public class FirstLever : MonoBehaviour
     {
         if (other.tag == "Hands")
         {
-            if(OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickRight))
             {
                 UpCartMove = true;
                 Hook1Move = false;
@@ -43,7 +43,7 @@ public class FirstLever : MonoBehaviour
             if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickUp))
             {
                 UpCartMove = false;
-                
+
                 if (StateNowHooks.State == 0)
                 {
                     if (StateNowFirstSecondHooks.State == 0)
@@ -156,5 +156,12 @@ public class FirstLever : MonoBehaviour
                 }
             }
         }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        UpCartMove = true;
+        Hook1Move = false;
+        Hook2Move = false;
+        Hook3Move = false;
     }
 }

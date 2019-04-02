@@ -118,5 +118,10 @@ public class ThirdLever : MonoBehaviour
     void OnTriggerExit (Collider other)
     {
         Move.EnableLinearMovement = true;
+       
+            Hook1Move = false;
+            Hook2Move = false;
+            Hook3Move = false;
+        
     }
 }
