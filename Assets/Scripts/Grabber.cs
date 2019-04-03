@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grabber : MonoBehaviour
 {
-    public Grabbutton IsGrabbed;
+    public Richpoint IsGrabbed;
     public Transform Hook1;
     public Transform Hook2;
     public Transform Hook3;
@@ -24,7 +24,7 @@ public class Grabber : MonoBehaviour
         {
             FirstHook = true;
             InTrigger = true;
-            if (IsGrabbed.Grabbed)
+            if (!IsGrabbed.Riched)
             {
                 ContainerRigidbody.isKinematic = true;
                 Container.transform.position = Hook1.position;
@@ -39,7 +39,7 @@ public class Grabber : MonoBehaviour
         {
             SecondHook = true;
             InTrigger = true;
-            if (IsGrabbed.Grabbed)
+            if (!IsGrabbed.Riched)
             {
                 ContainerRigidbody.isKinematic = true;
                 Container.transform.position = Hook2.position;
@@ -54,7 +54,7 @@ public class Grabber : MonoBehaviour
         {
             ThirdHook = true;
             InTrigger = true;
-            if (IsGrabbed.Grabbed)
+            if (!IsGrabbed.Riched)
             {
                 ContainerRigidbody.isKinematic = true;
                 Container.transform.position = Hook3.position; 
