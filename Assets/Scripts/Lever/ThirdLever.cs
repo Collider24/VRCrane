@@ -5,7 +5,6 @@ using UnityEngine;
 public class ThirdLever : MonoBehaviour
 {
     public CraneControl Cabine;
-    public OVRPlayerController Move;
     public TumblerMechanicsTwoPoints StateNowMoveCart;
     public TumblerMechanicsTwoPoints StateNowMoveHook;
     public TumblerMechanicsThreePoints StateNowMoveAllHooks;
@@ -16,7 +15,6 @@ public class ThirdLever : MonoBehaviour
     {
         if (other.tag == "Hands")
         {
-            Move.EnableLinearMovement = false;
             if (OVRInput.Get(OVRInput.Button.PrimaryThumbstickRight))
             {
                 if (StateNowMoveCart.State == 0)
@@ -117,7 +115,6 @@ public class ThirdLever : MonoBehaviour
     }
     void OnTriggerExit (Collider other)
     {
-        Move.EnableLinearMovement = true;
        
             Hook1Move = false;
             Hook2Move = false;
