@@ -40,7 +40,7 @@ public class FirstLever : MonoBehaviour
                     Cabine.MoveUpCart(true);
                 }
             }
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickUp))
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickDown))
             {
                 UpCartMove = false;
 
@@ -98,7 +98,7 @@ public class FirstLever : MonoBehaviour
                     }
                 }
             }
-            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickDown))
+            if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickUp))
             {
                 UpCartMove = false;
                 if (StateNowHooks.State == 0)

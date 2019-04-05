@@ -20,36 +20,6 @@ public class Grabber : MonoBehaviour
     }
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Hook1")
-        {
-            FirstHook = true;
-            InTrigger = true;
-            if (!IsGrabbed.Riched)
-            {
-                ContainerRigidbody.isKinematic = true;
-                Container.transform.position = Hook1.position;
-            }
-            else
-            {
-                if (ContainerRigidbody.isKinematic)
-                    ContainerRigidbody.isKinematic = false;
-            }
-        }
-        if (other.tag == "Hook2")
-        {
-            SecondHook = true;
-            InTrigger = true;
-            if (!IsGrabbed.Riched)
-            {
-                ContainerRigidbody.isKinematic = true;
-                Container.transform.position = Hook2.position;
-            }
-            else
-            {
-                if (ContainerRigidbody.isKinematic)
-                    ContainerRigidbody.isKinematic = false;
-            }
-        }
         if (other.tag == "Hook3")
         {
             ThirdHook = true;

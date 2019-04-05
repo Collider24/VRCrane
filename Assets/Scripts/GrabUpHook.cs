@@ -25,7 +25,8 @@ public class GrabUpHook : MonoBehaviour {
         {
             if (!IsGrabbed.Riched)
             {
-                Debug.Log("Norm");
+                ContainerRigidbody.useGravity = false;
+                ContainerRigidbody.isKinematic = true;
                 Container.position = HookCenter.position;
                 delta = Hook1.position.y - Hook2.position.y;
                 if (delta < 0)
@@ -36,6 +37,11 @@ public class GrabUpHook : MonoBehaviour {
                 {
                     Container.rotation = Quaternion.Euler(0, 0, delta * Angel);
                 }
+            }
+            else
+            {
+                ContainerRigidbody.useGravity = true;
+                ContainerRigidbody.isKinematic = false;
             }
         }
     }

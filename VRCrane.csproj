@@ -553,6 +553,7 @@
     <Compile Include="Assets\Scripts\LightControl.cs" />
     <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\Outline.cs" />
+    <Compile Include="Assets\Scripts\Restart.cs" />
     <Compile Include="Assets\Scripts\Richpoint.cs" />
     <Compile Include="Assets\Scripts\ScreenControl.cs" />
     <Compile Include="Assets\Scripts\StartButton.cs" />
